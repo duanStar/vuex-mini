@@ -21,6 +21,13 @@ const store = createStore<RootState>({
           return state.count * 2;
         },
       },
+      actions: {
+        increment(context) {
+          setTimeout(() => {
+            context.commit("increment");
+          }, 1000);
+        },
+      },
     },
     b: {
       namespaced: true,

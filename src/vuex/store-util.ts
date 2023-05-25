@@ -68,7 +68,7 @@ function registerMutation<S extends Record<string, any>>(
   store: Store<S>,
   type: string,
   handler: Mutation<S>,
-  local: any
+  local: ActionContext<any, S>
 ) {
   const entry = store._mutations[type] || (store._mutations[type] = []);
   entry.push((payload: any) => {

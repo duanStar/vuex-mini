@@ -19,7 +19,7 @@ store.subscribe((mutation, state) => {
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
-  <span @click="store.commit('a/increment')">{{
+  <span @click="store.dispatch('a/increment')">{{
     store.getters["a/double"]
   }}</span>
 </template>

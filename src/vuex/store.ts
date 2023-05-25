@@ -111,7 +111,16 @@ export class Store<S extends Record<string, any>> {
   }
 
   subscribe(fn: Subscriber) {
-    this._subscribers.push(fn);
+    if (!this._subscribers.includes(fn)) {
+      this._subscribers.push(fn);
+    }
+
+    return () => {
+      const index = this._subscribers.indexOf(fn);
+      if (index > -1) {
+        this._subscribers.splice(index, 1);
+      }
+    };
   }
 }
 
