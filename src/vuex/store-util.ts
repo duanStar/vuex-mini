@@ -159,7 +159,7 @@ export function resetStoreState<S extends Record<string, any>>(
     computedObj[key] = partial(fn, store);
     computedCache[key] = computed(() => computedObj[key]());
     Object.defineProperty(store.getters, key, {
-      get: () => computedCache[key],
+      get: () => computedCache[key].value,
       enumerable: true,
     });
   });
